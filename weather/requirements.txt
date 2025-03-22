@@ -1,0 +1,87 @@
+# Core Dependencies
+Django>=4.2.0,<5.0.0
+djangorestframework>=3.14.0,<4.0.0
+django-cors-headers>=4.0.0,<5.0.0
+django-filter>=23.0,<24.0
+djangorestframework-simplejwt>=5.0.0,<6.0.0
+python-dotenv>=1.0.0,<2.0.0
+
+# Caching
+django-redis>=5.0.0,<6.0.0
+redis>=4.0.0,<5.0.0
+
+# Database
+psycopg2-binary>=2.9.0,<3.0.0
+
+# Numerical and Scientific Computing
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0,<3.0.0
+scipy>=1.10.0,<2.0.0
+
+# API Documentation
+drf-spectacular>=0.26.0,<1.0.0
+
+# Testing Dependencies
+pytest>=7.0.0,<8.0.0
+pytest-django>=4.5.0,<5.0.0
+pytest-cov>=4.0.0,<5.0.0
+pytest-mock>=3.10.0,<4.0.0
+factory-boy>=3.2.0,<4.0.0
+faker>=18.0.0,<19.0.0
+
+# Development Tools
+black>=23.0.0,<24.0.0
+isort>=5.12.0,<6.0.0
+flake8>=6.0.0,<7.0.0
+mypy>=1.0.0,<2.0.0
+django-stubs>=4.2.0,<5.0.0
+djangorestframework-stubs>=3.14.0,<4.0.0
+
+# Security
+django-ratelimit>=4.0.0,<5.0.0
+django-defender>=0.9.0,<1.0.0
+
+# Monitoring and Logging
+django-debug-toolbar>=4.0.0,<5.0.0
+sentry-sdk>=1.0.0,<2.0.0
+
+# Date and Time Handling
+pytz>=2023.0,<2024.0
+python-dateutil>=2.8.0,<3.0.0
+
+# Data Validation and Sanitization
+bleach>=6.0.0,<7.0.0
+pydantic>=2.0.0,<3.0.0
+
+# Performance and Optimization
+django-cacheops>=7.0.0,<8.0.0
+django-prometheus>=2.0.0,<3.0.0
+
+[options]
+package_dir=
+    =src
+packages=find:
+python_requires=>=3.9
+
+[options.packages.find]
+where=src
+
+[mypy]
+plugins =
+    mypy_django_plugin.main,
+    mypy_drf_plugin.main
+
+[flake8]
+max-line-length = 88
+extend-ignore = E203
+exclude = .git,__pycache__,build,dist,*.egg-info
+
+[tool:pytest]
+DJANGO_SETTINGS_MODULE = kisaan_mitra_backend.settings
+python_files = test_*.py
+addopts = --verbosity=2
+          --cov=.
+          --cov-report=html
+          --cov-report=term-missing
+          --no-cov-on-fail
+          -p no:warnings
